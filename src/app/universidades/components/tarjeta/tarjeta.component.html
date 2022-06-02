@@ -1,0 +1,43 @@
+<header class="container-fluid bg-info mb-5 p-5">
+    <h1 class="text-center display-2 text-light">Universidades info</h1>
+    <hr class="bg-light">
+</header>
+
+<main class="container">
+    <div class="row mb-5">
+        <div class="col"></div>
+        <div class="col-6 text-center shadow p-5">
+            <select name="pais" [(ngModel)]="pais" id="pais" class="form-select">
+                <option value="spain">Spain</option>
+                <option value="france">France</option>
+                <option value="italy">Italy</option>
+                <option value="portugal">Portugal</option>
+                <option value="germany">Germany</option>
+                <option value="united states">US</option>
+            </select>
+            <button (click)="showUniversidades(pais)" class="btn btn-info text-light mt-3">Show universities in {{pais | titlecase}} </button>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <ng-container *ngIf="listaUnis">
+            <ng-container *ngFor="let universidad of listaUnis" >
+        <div class="col-4">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <h4 class="card-tittle">{{universidad.name}}</h4>
+                            <hr>
+                            
+                            <ul class="list-group">
+                                <li class="list-group-item">{{universidad.domains}}</li>
+                                <li class="list-group-item">{{universidad.country}}</li>
+                                <li class="list-group-item"><a [href]="universidad.web_pages">{{universidad.web_pages}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </ng-container>
+            </ng-container>
+        <div class="col"></div>
+    </div>
+</main>
